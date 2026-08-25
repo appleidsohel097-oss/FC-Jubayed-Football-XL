@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>FC Jubayed Football XL</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#080d12;
+    color:#fff;
+}
+
+/* HEADER */
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:#0d141b;
+    border-bottom:1px solid #1d2a34;
+}
+
+.navbar{
+    max-width:1200px;
+    margin:auto;
+    height:70px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 20px;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:21px;
+    font-weight:bold;
+}
+
+.logo-icon{
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    background:#16c784;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:22px;
+}
+
+.logo span{
+    color:#16c784;
+}
+
+nav{
+    display:flex;
+    gap:25px;
+}
+
+nav a{
+    color:#c7d0d8;
+    text-decoration:none;
+    font-size:15px;
+}
+
+nav a:hover{
+    color:#16c784;
+}
+
+.menu-btn{
+    display:none;
+    background:none;
+    border:0;
+    color:white;
+    font-size:27px;
+}
+
+/* HERO */
+.hero{
+    max-width:1200px;
+    margin:25px auto;
+    padding:60px 35px;
+    border-radius:18px;
+    background:
+    linear-gradient(110deg,rgba(8,13,18,.95),rgba(8,13,18,.55)),
+    radial-gradient(circle at right,#126b4c,#0b151c 55%);
+    border:1px solid #20303b;
+}
+
+.hero h1{
+    font-size:46px;
+    max-width:650px;
+    line-height:1.1;
+}
+
+.hero h1 span{
+    color:#16c784;
+}
+
+.hero p{
+    margin-top:18px;
+    color:#aab5bd;
+    max-width:600px;
+    line-height:1.7;
+}
+
+.hero-buttons{
+    margin-top:25px;
+    display:flex;
+    gap:12px;
+}
+
+.btn{
+    border:none;
+    border-radius:8px;
+    padding:13px 20px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.btn-green{
+    background:#16c784;
+    color:#06110c;
+}
+
+.btn-dark{
+    background:#17232c;
+    color:white;
+    border:1px solid #2b3b46;
+}
+
+/* CONTAINER */
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:0 20px 50px;
+}
+
+.section-title{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin:35px 0 18px;
+}
+
+.section-title h2{
+    font-size:24px;
+}
+
+.section-title a{
+    color:#16c784;
+    text-decoration:none;
+    font-size:14px;
+}
+
+/* LIVE */
+.live-box{
+    background:#0e171e;
+    border:1px solid #253540;
+    border-radius:14px;
+    overflow:hidden;
+}
+
+.live-top{
+    padding:13px 18px;
+    border-bottom:1px solid #24323b;
+    display:flex;
+    justify-content:space-between;
+}
+
+.live-badge{
+    color:#ff4d5a;
+    font-size:13px;
+    font-weight:bold;
+}
+
+.match{
+    padding:25px;
+    display:grid;
+    grid-template-columns:1fr 160px 1fr;
+    align-items:center;
+    text-align:center;
+}
+
+.team{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
+}
+
+.team-logo{
+    width:65px;
+    height:65px;
+    border-radius:50%;
+    background:#17252e;
+    border:1px solid #344752;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:28px;
+}
+
+.team-name{
+    font-weight:bold;
+}
+
+.score{
+    font-size:42px;
+    font-weight:bold;
+}
+
+.time{
+    color:#16c784;
+    font-size:13px;
+    margin-top:4px;
+}
+
+/* UPCOMING GRID */
+.match-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.card{
+    background:#0e171e;
+    border:1px solid #253540;
+    border-radius:13px;
+    padding:20px;
+    transition:.2s;
+}
+
+.card:hover{
+    transform:translateY(-3px);
+    border-color:#16c784;
+}
+
+.card-date{
+    color:#8f9da6;
+    font-size:13px;
+    margin-bottom:18px;
+}
+
+.teams-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    text-align:center;
+}
+
+.small-team{
+    width:42%;
+}
+
+.small-logo{
+    width:52px;
+    height:52px;
+    margin:auto;
+    border-radius:50%;
+    background:#17252e;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:22px;
+    margin-bottom:9px;
+}
+
+.vs{
+    color:#7f8c95;
+    font-size:13px;
+}
+
+.card-time{
+    text-align:center;
+    margin-top:20px;
+    padding-top:14px;
+    border-top:1px solid #25323b;
+    color:#16c784;
+}
+
+/* TEAMS */
+.team-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.team-card{
+    background:#0e171e;
+    border:1px solid #253540;
+    border-radius:12px;
+    padding:20px;
+    text-align:center;
+}
+
+.team-card .small-logo{
+    width:65px;
+    height:65px;
+}
+
+/* NEWS */
+.news-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.news-card{
+    background:#0e171e;
+    border:1px solid #253540;
+    border-radius:13px;
+    overflow:hidden;
+}
+
+.news-image{
+    height:150px;
+    background:linear-gradient(135deg,#123d31,#16232c);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:55px;
+}
+
+.news-content{
+    padding:18px;
+}
+
+.news-content small{
+    color:#16c784;
+}
+
+.news-content h3{
+    margin:10px 0;
+    line-height:1.4;
+}
+
+.news-content p{
+    color:#8e9aa3;
+    font-size:14px;
+    line-height:1.5;
+}
+
+/* SEARCH */
+.search-box{
+    display:flex;
+    margin:20px 0;
+}
+
+.search-box input{
+    width:100%;
+    padding:14px;
+    border-radius:8px 0 0 8px;
+    border:1px solid #293943;
+    background:#101a21;
+    color:white;
+    outline:none;
+}
+
+.search-box button{
+    width:90px;
+    border:0;
+    border-radius:0 8px 8px 0;
+    background:#16c784;
+    font-weight:bold;
+}
+
+/* FOOTER */
+footer{
+    border-top:1px solid #1e2b34;
+    background:#0a1015;
+    padding:35px 20px;
+    text-align:center;
+    color:#7f8c94;
+}
+
+footer strong{
+    color:#16c784;
+}
+
+/* MOBILE */
+@media(max-width:800px){
+
+    nav{
+        display:none;
+        position:absolute;
+        top:70px;
+        left:0;
+        right:0;
+        background:#0d141b;
+        padding:20px;
+        flex-direction:column;
+        border-bottom:1px solid #253540;
+    }
+
+    nav.active{
+        display:flex;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+
+    .hero{
+        margin:15px;
+        padding:40px 22px;
+    }
+
+    .hero h1{
+        font-size:34px;
+    }
+
+    .match{
+        grid-template-columns:1fr;
+        gap:20px;
+    }
+
+    .match .score{
+        order:2;
+    }
+
+    .match .team:first-child{
+        order:1;
+    }
+
+    .match .team:last-child{
+        order:3;
+    }
+
+    .match-grid,
+    .news-grid{
+        grid-template-columns:1fr;
+    }
+
+    .team-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:450px){
+    .logo{
+        font-size:17px;
+    }
+
+    .logo-icon{
+        width:35px;
+        height:35px;
+    }
+
+    .hero h1{
+        font-size:29px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="navbar">
+
+        <div class="logo">
+            <div class="logo-icon">⚽</div>
+            FC <span>JUBAYED</span>
+        </div>
+
+        <nav id="nav">
+            <a href="#home">Home</a>
+            <a href="#live">Live</a>
+            <a href="#matches">Matches</a>
+            <a href="#teams">Teams</a>
+            <a href="#news">News</a>
+        </nav>
+
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+    </div>
+</header>
+
+
+<!-- HERO -->
+<section class="hero" id="home">
+
+    <h1>
+        Your Home For
+        <span>Football</span>
+    </h1>
+
+    <p>
+        Follow live football matches, upcoming games, scores,
+        teams and football news — all in one place.
+    </p>
+
+    <div class="hero-buttons">
+        <button class="btn btn-green"
+                onclick="document.getElementById('live').scrollIntoView()">
+            🔴 Watch Live
+        </button>
+
+        <button class="btn btn-dark"
+                onclick="document.getElementById('matches').scrollIntoView()">
+            View Matches
+        </button>
+    </div>
+
+</section>
+
+
+<div class="container">
+
+<!-- SEARCH -->
+<div class="search-box">
+    <input
+        type="text"
+        id="searchInput"
+        placeholder="Search teams or matches..."
+        onkeyup="searchMatches()"
+    >
+    <button>Search</button>
+</div>
+
+
+<!-- LIVE MATCH -->
+<div class="section-title" id="live">
+    <h2>🔴 Live Match</h2>
+    <a href="#">View All</a>
+</div>
+
+<div class="live-box">
+
+    <div class="live-top">
+        <span>International Friendly</span>
+        <span class="live-badge">● LIVE</span>
+    </div>
+
+    <div class="match">
+
+        <div class="team">
+            <div class="team-logo">🇧🇷</div>
+            <div class="team-name">Brazil</div>
+        </div>
+
+        <div>
+            <div class="score">2 - 1</div>
+            <div class="time">72'</div>
+        </div>
+
+        <div class="team">
+            <div class="team-logo">🇦🇷</div>
+            <div class="team-name">Argentina</div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- UPCOMING MATCHES -->
+<div class="section-title" id="matches">
+    <h2>⚽ Upcoming Matches</h2>
+    <a href="#">View All</a>
+</div>
+
+<div class="match-grid" id="matchGrid">
+
+    <div class="card">
+        <div class="card-date">Today • 8:00 PM</div>
+
+        <div class="teams-row">
+
+            <div class="small-team">
+                <div class="small-logo">🇪🇸</div>
+                Spain
+            </div>
+
+            <div class="vs">VS</div>
+
+            <div class="small-team">
+                <div class="small-logo">🇫🇷</div>
+                France
+            </div>
+
+        </div>
+
+        <div class="card-time">⏰ 8:00 PM</div>
+    </div>
+
+
+    <div class="card">
+        <div class="card-date">Tomorrow • 9:30 PM</div>
+
+        <div class="teams-row">
+
+            <div class="small-team">
+                <div class="small-logo">🇩🇪</div>
+                Germany
+            </div>
+
+            <div class="vs">VS</div>
+
+            <div class="small-team">
+                <div class="small-logo">🇮🇹</div>
+                Italy
+            </div>
+
+        </div>
+
+        <div class="card-time">⏰ 9:30 PM</div>
+    </div>
+
+
+    <div class="card">
+        <div class="card-date">Friday • 7:00 PM</div>
+
+        <div class="teams-row">
+
+            <div class="small-team">
+                <div class="small-logo">🇵🇹</div>
+                Portugal
+            </div>
+
+            <div class="vs">VS</div>
+
+            <div class="small-team">
+                <div class="small-logo">🇳🇱</div>
+                Netherlands
+            </div>
+
+        </div>
+
+        <div class="card-time">⏰ 7:00 PM</div>
+    </div>
+
+</div>
+
+
+<!-- TEAMS -->
+<div class="section-title" id="teams">
+    <h2>🏆 Popular Teams</h2>
+    <a href="#">All Teams</a>
+</div>
+
+<div class="team-grid">
+
+    <div class="team-card">
+        <div class="small-logo">🇧🇷</div>
+        <strong>Brazil</strong>
+    </div>
+
+    <div class="team-card">
+        <div class="small-logo">🇦🇷</div>
+        <strong>Argentina</strong>
+    </div>
+
+    <div class="team-card">
+        <div class="small-logo">🇪🇸</div>
+        <strong>Spain</strong>
+    </div>
+
+    <div class="team-card">
+        <div class="small-logo">🇫🇷</div>
+        <strong>France</strong>
+    </div>
+
+</div>
+
+
+<!-- NEWS -->
+<div class="section-title" id="news">
+    <h2>📰 Latest Football News</h2>
+    <a href="#">More News</a>
+</div>
+
+<div class="news-grid">
+
+    <div class="news-card">
+
+        <div class="news-image">⚽</div>
+
+        <div class="news-content">
+            <small>FOOTBALL</small>
+
+            <h3>
+                Welcome to FC Jubayed Football XL
+            </h3>
+
+            <p>
+                Get match updates, scores and football
+                information from one place.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="news-card">
+
+        <div class="news-image">🏆</div>
+
+        <div class="news-content">
+            <small>MATCH</small>
+
+            <h3>
+                Big matches coming this week
+            </h3>
+
+            <p>
+                Check the upcoming matches and follow
+                your favourite teams.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="news-card">
+
+        <div class="news-image">🔥</div>
+
+        <div class="news-content">
+            <small>UPDATE</small>
+
+            <h3>
+                Football action never stops
+            </h3>
+
+            <p>
+                Stay connected with FC Jubayed Football XL
+                for the latest updates.
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+
+
+<!-- FOOTER -->
+<footer>
+
+    <p>
+        © 2026 <strong>FC Jubayed Football XL</strong>
+    </p>
+
+    <p style="margin-top:8px;">
+        Football • Matches • Scores • News
+    </p>
+
+</footer>
+
+
+<script>
+
+/* MOBILE MENU */
+
+function toggleMenu(){
+
+    document.getElementById("nav")
+    .classList.toggle("active");
+
+}
+
+
+/* SEARCH */
+
+function searchMatches(){
+
+    let input =
+        document.getElementById("searchInput")
+        .value
+        .toLowerCase();
+
+    let cards =
+        document.querySelectorAll("#matchGrid .card");
+
+    cards.forEach(function(card){
+
+        let text =
+            card.innerText.toLowerCase();
+
+        if(text.includes(input)){
+            card.style.display = "";
+        }else{
+            card.style.display = "none";
+        }
+
+    });
+
+}
+
+</script>
+
+</body>
+</html>
